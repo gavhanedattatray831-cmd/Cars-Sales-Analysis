@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Sales & Price Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<body>
+  <aside class="sidebar">
+    <h2>Auto<span>Analytics</span></h2>
+    <p class="nav active">▦ &nbsp; Dashboard</p>
+    <p class="nav">🚘 &nbsp; Car Sales</p>
+    <p class="nav">📊 &nbsp; Price Analysis</p>
+    <div class="side-bottom">Car Sales Project<br><small>Sales & Price Analysis</small></div>
+  </aside>
+
+  <main class="main">
+    <header>
+      <div>
+        <h1>Car Sales Dashboard</h1>
+        <p>Explore car sales, prices and market trends.</p>
+      </div>
+      <button id="exportBtn">Export CSV ↓</button>
+    </header>
+
+     <article class="stat">
+  <p>Total Profit</p>
+  <h2 id="totalProfit">₹0</h2>
+  <small>Estimated gross profit</small>
+</article>
+
+<article class="stat">
+  <p>Profit Margin</p>
+  <h2 id="profitMargin">0%</h2>
+  <small>Profit as a share of sales value</small>
+</article></section> class="cards">
+      <article class="stat">
+        <p>Total Cars</p><h2 id="totalCars">0</h2>
+        <small>Records in dataset</small>
+      </article>
+      <article class="stat">
+        <p>Total Sales Value</p><h2 id="totalSales">₹0</h2>
+        <small>Combined car value</small>
+      </article>
+      <article class="stat">
+        <p>Average Car Price</p><h2 id="avgPrice">₹0</h2>
+        <small>Average listed price</small>
+      </article>
+      <article class="stat">
+        <p>Top Brand</p><h2 id="topBrand">—</h2>
+        <small>Most records in selection</small>
+      </article>
+    </section>
+
+    <section class="filters">
+      <input id="search" placeholder="Search car or model...">
+      <select id="brandFilter">
+        <option value="">All Brands</option>
+      </select>
+      <select id="fuelFilter">
+        <option value="">All Fuel Types</option>
+        <option>Petrol</option><option>Diesel</option>
+        <option>Electric</option><option>Hybrid</option>
+      </select>
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="0-1000000">Under ₹10 Lakh</option>
+        <option value="1000000-2000000">₹10–20 Lakh</option>
+        <option value="2000000-99999999">Above ₹20 Lakh</option>
+      </select>
+      <button id="resetBtn" class="reset">Reset</button>
+      <label class="upload-btn" for="csvUpload">
+  <input id="csvUpload" type="file" accept=".csv,text/csv" hidden>
+</label>
+    </section>
+
+    <section class="charts">
+      <article class="panel">
+        <h3>Sales Records by Brand</h3>
+        <canvas id="brandChart"></canvas>
+      </article>
+      <article class="panel">
+        <h3>Cars by Fuel Type</h3>
+        <canvas id="fuelChart"></canvas>
+      </article>
+      <article class="panel wide">
+        <h3>Average Price by Brand</h3>
+        <canvas id="priceChart"></canvas>
+      </article>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="table-heading">
+        <div><h3>Car Sales Records</h3><p id="recordCount">0 records</p></div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Brand</th><th>Model</th><th>Year</th>
+              <th>Fuel</th><th>Units Sold</th><th>Price</th><th>Sales Value</th>
+            </tr>
+          </thead>
+          <tbody id="carTable"></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button id="prevBtn">← Previous</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextBtn">Next →</button>
+      </div>
+    </section>
+
+    <footer>Car Sales & Price Analysis | Educational sample dataset</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
